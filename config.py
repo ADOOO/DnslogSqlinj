@@ -81,7 +81,7 @@ def banner():
 
 	DnsLog SqlInj Scanner by ADO
 	Version 1.0
-	https://adooo.github.io/
+	https://github.com/ADOOO/DnslogSqlinj
 _______________________________________________________________
 	"""
 	print str

