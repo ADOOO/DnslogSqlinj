@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import requests
 from config import *
+from checkSql import check
+
+import requests
 import json
 import optparse
 import sys
@@ -23,6 +25,7 @@ class DnsSql(object):
 		self.DNSurl = DNSurl
 		self.options = options
 		self.injUrl = options.url
+		self.check = options.check
 		self.taskname = options.taskname
 		self.thread_count = int(options.thread_count)
 
@@ -124,6 +127,9 @@ class DnsSql(object):
 			except Exception,e:
 				return e.message
 				# print e
+
+		elif self.check:
+			check(self.injUrl)
 
 		else:
 			self.getInf()
@@ -246,11 +252,14 @@ if __name__ == '__main__':
 
 	print '[-]{}\n'.format(start_time)
 	parser = optparse.OptionParser("usage: %prog [options] -u http://10.1.1.9/sqli-labs/Less-9/?id=1' and ({})--+", version="%prog 1.1")
+
+	parser.add_option("-u","--url", dest='url', default='',  help="target include injection")
+
+	parser.add_option("-c","--check", dest='check', default='', action='store_true', help="task name")
+
 	parser.add_option("-n","--name", dest='taskname', default='dnsloginj',  help="task name")
 	parser.add_option("-t","--thread", dest='thread_count', default='5',  help="thread_count")
-	parser.add_option("-u","--url", dest='url', default='',  help="target include injection")
 	parser.add_option("-i","--inf", dest='inf', default='',  help="Testing target and Try to get information")
-
 	parser.add_option("--dbs", dest='dbs', default='',  action='store_true', help="get database")
 	parser.add_option("-D", dest='db', default='',  help="database name")
 

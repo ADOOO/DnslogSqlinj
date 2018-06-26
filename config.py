@@ -2,14 +2,18 @@
 # -*- coding: utf-8 -*-
 
 # DNSlog 设置
-APItoken = 'you_ceye_api'
-DNSurl = 'you_ceye_addr'
+APItoken = 'you_api'
+DNSurl = 'you_addr'
 
 # 超时时间
 timeout = 30
 
 # 多线程线程数
 # thread_count = 10
+
+# 识别规则列表
+patternClose = ['',"'","')",'"','")']
+patternLink = ['and', 'or', 'like', '=', '<', '>', 'regexp']
 
 # 是否允许URL重定向
 allow_redirects = True
